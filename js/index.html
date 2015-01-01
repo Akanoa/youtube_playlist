@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css">
+    <title>Youtube test</title>
+</head>
+
+<body ng-app="YoutubePlaylist">
+    <div class="navbar navbar-default">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Youtube Playlist</a>
+      </div>
+    </div>
+    <h1 class="text-center">Youtube playlists</h1>
+    <div class="container" ng-controller="ChannelCtrl">
+        <form ng-submit="findPlaylist()">
+            <input type="text" ng-model="channelName" placeholder="nom de la chaîne">
+            <input type="submit" class="btn btn-primary" value="Playlist"/>
+        </form>
+        <p>{{channelId}}</p>
+        
+        <div class="container" ng-repeat="playlist in playlists">
+            <div class="playlist">
+                <img src="{{playlist.thumbail.url}}" alt="{{playlist.title}}">
+                <div class="playlist-title text-center">{{playlist.title}}</div>
+            </div>
+        </div>
+        
+        <pre class="container debug">
+            {{debug}}
+        </pre>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
